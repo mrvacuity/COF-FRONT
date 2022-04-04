@@ -1,11 +1,4 @@
-// React Native App Intro Slider using AppIntroSlider
-// https://aboutreact.com/react-native-app-intro-slider/
-// Simple Intro Slider
-
-// import React in our code
 import React, {useState} from 'react';
-
-// import all the components we are going to use
 import {
   SafeAreaView,
   StyleSheet,
@@ -14,8 +7,6 @@ import {
   Image,
   Button,
 } from 'react-native';
-import Icon from 'react-native-vector-icons';
-//import AppIntroSlider to use it
 import AppIntroSlider from 'react-native-app-intro-slider';
 
 export default function CameraGuide({ navigation }) {

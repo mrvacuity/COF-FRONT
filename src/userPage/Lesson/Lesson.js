@@ -18,6 +18,7 @@ import {
   MaterialIcons,
 } from "@expo/vector-icons";
 const { width, height } = Dimensions.get("screen");
+import YoutubePlayer from "react-native-youtube-iframe";
 export default function Lesson({ navigation, route }) {
   //const [page, setPage] = useState(1);
   const [testLight, setTestLight] = useState(false);
@@ -121,11 +122,7 @@ export default function Lesson({ navigation, route }) {
             {data[tab].image_url.img != null && data[tab].image_url.img != "" && (
               <Image
                 resizeMode="stretch"
-                style={[
-                  styles.viewImgCoffee,
-                  // { height: (data[tab].image_url.height) / 3},
-
-                ]}
+                style={[styles.viewImgCoffee,]}
                 source={{
                   uri:
                     "http://165.22.251.6:5000/api/image/getimage/" +
@@ -133,17 +130,16 @@ export default function Lesson({ navigation, route }) {
                 }}
               />
             )}
-            {data[tab].video_url != "" && (
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate("Video", data[tab]);
-                }}
-                style={styles.buttonVideo}
-              >
-                <Text style={styles.textLight}>Video</Text>
-              </TouchableOpacity>
-            )}
             <Text style={styles.textLight}>{data[tab].description}</Text>
+            {data[tab].video_url != "" && (
+              <View style={{ marginTop: 10 }}>
+                <YoutubePlayer
+                  height={200}
+                  play={false}
+                  videoId={data[tab].video_url}
+                />
+            </View>
+            )}
           </View>
         </View>
       </ScrollView>

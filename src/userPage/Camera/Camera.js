@@ -23,6 +23,7 @@ import {
   Ionicons,
   SimpleLineIcons,
   Entypo,
+  MaterialIcons,
 } from "@expo/vector-icons";
 const { width, height } = Dimensions.get("screen");
 import { Camera } from "expo-camera";
@@ -99,12 +100,8 @@ export default function Camara({ navigation }) {
     setIsCameraReady(true);
   };
   const onSnap = async () => {
-    // if (cameraRef.current) {
     const options = { quality: 0.7, base64: true };
     const result = await cameraRef.current.takePictureAsync(options);
-
-    // const source = data.base64;
-
     let localUri = result.uri;
     let filename = localUri.split("/").pop();
     let match = /\.(\w+)$/.exec(filename);
@@ -122,11 +119,6 @@ export default function Camara({ navigation }) {
 
     setDefaultsImage(base64upload.data.imageRefId);
     setPage(2);
-    // if (source) {
-    //   await cameraRef.current.pausePreview();
-    //   setIsPreview(true);
-    //   setPage(2);
-    // }
   };
 
   if (hasPermission === null) {
@@ -147,7 +139,7 @@ export default function Camara({ navigation }) {
               justifyContent: "center",
             }}
           >
-            <ActivityIndicator size={"large"} />
+            <ActivityIndicator size={"large"} color="#FFFFFF" />
           </View>
         </Modal>
         <Modal
@@ -159,16 +151,20 @@ export default function Camara({ navigation }) {
             setModalVisible1(!modalVisible1);
           }}
         >
+          <View style={[styles.bgModal,{
+          }]}>
 
-          <View style={styles.bgModal}>
-
-            <View style={[styles.viewAboutpHModal,]}>
+            <View style={[styles.viewAboutpHModal,
+            ]}>
 
               <TouchableOpacity
                 onPress={() => {
                   setModalVisible1(false);
                 }}
-                style={{ position: "absolute", right: 10, top: 10 }}
+                style={{
+                  position: "absolute",
+                  right: 10,
+                  top: 10 }}
               >
                 <Ionicons name="close-outline" size={24} color="#000000" />
               </TouchableOpacity>
@@ -178,10 +174,9 @@ export default function Camara({ navigation }) {
                   justifyContent:'center',
                   width:'80%',
                   height:'100%',
-                  // backgroundColor:'red',
+                  // backgroundColor:'yellow',
                 }}
                 >
-
                   <Image
                       style={{
                         marginLeft:'25%',
@@ -213,12 +208,16 @@ export default function Camara({ navigation }) {
                     <Text style ={{fontSize:16,}}>{'          '}processes produce dark beans, which contain the lowest levels of acid.</Text>
                   </View>
                   <Text>{'\n'}</Text>
-                  <View style={{ flexDirection: 'row', flexWrap:'wrap', }}>
+                    <View style={{ flexDirection: 'row', flexWrap:'wrap',
+                        // backgroundColor: "green" ,
+                        // height : "100%"
+                       }}
+                    >
                     <Text style={{ fontFamily: "RobotoBold", fontSize:16,}}>Hints</Text>
                     <Text style={{fontSize:16}}>{'          '}You can make coffee less acidic by simply adding milk. The calcium in milk neutralizes some of the acids in the coffee. </Text>
                   </View>
-                  {/* <Text>{'\n'}</Text>
-                  <Text style={{fontSize:16}}>pH 4.80 - 4.89 = Very sour</Text>
+                  <Text>{'\n'}</Text>
+                  {/* <Text style={{fontSize:16}}>pH 4.80 - 4.89 = Very sour</Text>
                   <Text style={{fontSize:16}}>pH 4.90 - 5.09 = Sour</Text>
                   <Text style={{fontSize:16}}>pH 5.10 - 5.30 = Not too sour</Text> */}
                 </View>
@@ -583,21 +582,20 @@ export default function Camara({ navigation }) {
             ) : (
               <TouchableOpacity
                 onPress={() => {
-                  // setModalVisible(true);
                   navigation.navigate("CameraGuide");
                 }}
               >
                 <Ionicons name="alert-circle-outline" size={24} color="#000000" />
               </TouchableOpacity>
-
             )}
-
             <Text style={styles.textTitle}>Coffee Analysis</Text>
             <TouchableOpacity
               onPress={() => {
                 navigation.navigate("HistoryResult");
               }}>
-              <Feather name="save" size={20} color="#z484848" />
+              <MaterialIcons
+              name = "history-edu"
+              size={26} />
             </TouchableOpacity>
           </View>
           {page == 1 && (
@@ -643,18 +641,6 @@ export default function Camara({ navigation }) {
                   <Feather name="image" size={30} color="#484848" />
                 </TouchableOpacity>
               </View>
-
-              {/* <View
-                style={{
-                  width: width * 0.8,
-                  backgroundColor: "#E0DAD6",
-                  alignSelf: "center",
-                  marginTop: 40,
-                  borderRadius: 5,
-                  paddingHorizontal: 20,
-                  paddingVertical: 20,
-                }}
-              > */}
               <View style={{
                 alignItems: 'center',
                 justifyContent: "center",
@@ -664,7 +650,6 @@ export default function Camara({ navigation }) {
                 backgroundColor: "#E0DAD6",
                 marginLeft: '10%',
               }}
-              // E0DAD6
               >
                 <View style={{
                   alignItems: 'center',
@@ -676,12 +661,9 @@ export default function Camara({ navigation }) {
                   </View>
                   <Text style={{ fontFamily: "RobotoBold", }}>white background</Text>
                 </View>
-
-
-                <TouchableOpacity
+                {/* <TouchableOpacity
               onPress={() => {
-                setModalVisible1(true);
-
+                navigation.navigate("AboutpHValue");
               }}
               style={{
                 width: 160,
@@ -696,7 +678,6 @@ export default function Camara({ navigation }) {
                 style={{
                   width: 60,
                   height: 18,
-                  backgroundColor: "#FFF",
                   borderTopRightRadius: 20,
                   borderTopLeftRadius: 20,
                   justifyContent: "center",
@@ -704,7 +685,6 @@ export default function Camara({ navigation }) {
                   alignSelf: "center",
                 }}
               >
-                <Entypo name="chevron-small-up" size={24} color="#000000" />
               </View>
               <View
                 style={{
@@ -719,7 +699,7 @@ export default function Camara({ navigation }) {
               >
                 <Text style={styles.textSujectLight}>About pH Value</Text>
               </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
               </View>
             </View>
           ) : page == 2 ? (
@@ -926,21 +906,18 @@ export default function Camara({ navigation }) {
                             : data >= 6.01 && data <= 14 && "-"}
                   </Text>
                 </View>
-
-
               </ScrollView>
             )
           )}
           {page == 3 && (
             <TouchableOpacity
-              onPress={() => {
-                setModalVisible1(true);
-              }}
+            onPress={() => {
+              navigation.navigate("AboutpHValue");
+            }}
               style={{
                 width: 160,
                 height: 67,
                 marginBottom: Platform.OS == 'android' ? height * 0.1 : 0,
-                // marginTop: Platform.OS == 'android' ? height *  : 20,
                 position: "absolute",
                 bottom: 0,
                 alignSelf: "center",
@@ -950,7 +927,6 @@ export default function Camara({ navigation }) {
                 style={{
                   width: 60,
                   height: 18,
-                  backgroundColor: "#FFF",
                   borderTopRightRadius: 20,
                   borderTopLeftRadius: 20,
                   justifyContent: "center",
@@ -958,7 +934,6 @@ export default function Camara({ navigation }) {
                   alignSelf: "center",
                 }}
               >
-                <Entypo name="chevron-small-up" size={24} color="#000000" />
               </View>
               <View
                 style={{
@@ -1063,6 +1038,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     backgroundColor: "#000000bb",
+    // backgroundColor: "blue",
     justifyContent: "center",
   },
   viewDetailModal: {

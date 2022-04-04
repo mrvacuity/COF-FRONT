@@ -1,7 +1,7 @@
 // In App.js in a new project
 
 import * as React from "react";
-import { View, Text, Image, Linking, Dimensions } from "react-native";
+import { View, Text, Image, Linking, Dimensions,  Platform } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -32,6 +32,7 @@ import Favorite from "../userPage/Favorite/Favorite";
 import Post from "../userPage/Post/Post";
 import CameraGuide from "../userPage/CameraGuide/CameraGuide";
 import HomeGuide from "../userPage/HomeGuide/HomeGuide";
+import AboutpHValue from "../userPage/AboutpHValue/AboutpHValue";
 
 import Menu from "../adminPage/Menu/Menu";
 import EditLesson from "../adminPage/EditLesson/EditLesson";
@@ -73,6 +74,7 @@ function main() {
       <Stack.Screen name="Post" component={Post} />
       <Stack.Screen name="CameraGuide" component={CameraGuide} />
       <Stack.Screen name="HomeGuide" component={HomeGuide} />
+      <Stack.Screen name="AboutpHValue" component={AboutpHValue} />
 
       <Stack.Screen name="EditLesson" component={EditLesson} />
       <Stack.Screen name="EditArticle" component={EditArticle} />
@@ -105,7 +107,7 @@ function MyTabs() {
             <View
               style={{
                 alignItems: "center",
-                marginTop: 20,
+                marginTop: Platform.OS == 'android' ? 15 : 20,
               }}
             >
               <MaterialIcons
@@ -124,7 +126,7 @@ function MyTabs() {
         options={{
           tabBarLabel: "",
           tabBarIcon: ({ color, size, focused }) => (
-            <View style={{ alignItems: "center", marginTop: 20 }}>
+            <View style={{ alignItems: "center", marginTop: Platform.OS == 'android' ? 15 : 20}}>
               <Feather
                 name="camera"
                 size={21}
@@ -141,7 +143,7 @@ function MyTabs() {
         options={{
           tabBarLabel: "",
           tabBarIcon: ({ color, size, focused }) => (
-            <View style={{ alignItems: "center", marginTop: 20 }}>
+            <View style={{ alignItems: "center", marginTop: Platform.OS == 'android' ? 15 : 20 }}>
               <MaterialIcons
                 name="my-library-books"
                 size={22}
@@ -158,7 +160,7 @@ function MyTabs() {
         options={{
           tabBarLabel: "",
           tabBarIcon: ({ color, size, focused }) => (
-            <View style={{ alignItems: "center", marginTop: 20 }}>
+            <View style={{ alignItems: "center", marginTop: Platform.OS == 'android' ? 15 : 20}}>
               <MaterialIcons
                 name="account-circle"
                 size={22}
