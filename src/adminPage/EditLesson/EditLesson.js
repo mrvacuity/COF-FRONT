@@ -11,6 +11,8 @@ import {
   FlatList,
   ScrollView,
   Modal,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 import {
   MaterialCommunityIcons,
@@ -221,6 +223,10 @@ export default function EditLesson({ navigation }) {
         }}
       >
         <View style={styles.bgModal}>
+        <ScrollView keyboardShouldPersistTaps='handled'
+        style={{ width: "100%",flex: 1, height:'100%',
+         marginTop: '40%',
+         }}>
           <View style={[styles.viewDetailModal]}>
             <TouchableOpacity
               onPress={pickImage}
@@ -247,7 +253,8 @@ export default function EditLesson({ navigation }) {
                 <AntDesign name="pluscircleo" size={24} color="#CCCCCC" />
               )}
             </TouchableOpacity>
-            <View style={{ width: "70%", marginTop: 10 }}>
+
+            <View style={{ width: "70%", marginTop: 10}}>
               <TextInput
                 value={state.title}
                 onChangeText={(text) => {
@@ -257,7 +264,6 @@ export default function EditLesson({ navigation }) {
                 style={styles.textInput}
               />
             </View>
-
             <View style={{
               width: "70%",
               height: "20%",
@@ -282,6 +288,7 @@ export default function EditLesson({ navigation }) {
                 ]}
               />
             </View>
+
 
 
             <View style={{ flexDirection: "row" }}>
@@ -314,7 +321,7 @@ export default function EditLesson({ navigation }) {
                 </Text>
               </TouchableOpacity>
             </View>
-          </View>
+          </View></ScrollView>
         </View>
       </Modal>
       <Modal

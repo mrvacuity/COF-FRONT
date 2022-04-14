@@ -220,7 +220,7 @@ export default function Home({ navigation }) {
                               items.lesson_id == item.id &&
                               items.Type == "POSTTEST"
                             );
-                          })[0]?.score + " %"}
+                          }).sort((a, b) => b.score - a.score)[0]?.score + " %"}
                       </Text>
                     </View>
 

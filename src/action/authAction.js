@@ -17,12 +17,19 @@ export async function authActionEditProfile({ state, token }) {
     throw error;
   }
 }
-export async function authActionScore({ state, token }) {
+export async function authActionScore({ state, score, token }) {
   try {
+    const temp = {
+      score : score
+    }
+    const result = {
+      ...state,
+      ...temp
+    }
     const response = await apiservice({
       path: "/lesson/createscore",
       method: "post",
-      body: state,
+      body: result,
       token: token,
     });
     if (response.status == 200) {

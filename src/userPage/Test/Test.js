@@ -17,10 +17,11 @@ import {
   Entypo,
   FontAwesome,
 } from "@expo/vector-icons";
-import { useRecoilState } from "recoil";
+import { constSelector, useRecoilState } from "recoil";
 import { tokenState } from "../../recoil/recoil";
 import { apiservice } from "../../service/api";
 import { authActionScore } from "../../action/authAction";
+import { resolveDiscoveryAsync } from "expo-auth-session";
 const { width, height } = Dimensions.get("screen");
 export default function Test({ navigation, route }) {
   const [token, setToken] = useRecoilState(tokenState);
@@ -28,27 +29,21 @@ export default function Test({ navigation, route }) {
   const [quiz, setQuiz] = useState([]);
   const [choice, setchoice] = useState("");
   const [ans, setAns] = useState([]);
-
+  const [check, setCheck] = useState(false);
   const [state, setState] = useState({
     Type: "POSTTEST",
     lesson_id: route.params.id,
-    score: "",
   });
   const [status, setStatus] = useState(false);
   useEffect(() => {
     getTest();
   }, []);
-  async function send() {
-    // let data = {
-    //   ...state,
-    //   score: (
-    //     (ans.filter((e) => e.myAns == e.Answer).length / quiz.length) *
-    //     100
-    //   ).toFixed(),
-    // };
+  const senddata = async () => {
     if (ans.length == quiz.length) {
+      var score = (ans.filter((e) => e.myAns == e.Answer).length.toFixed() / quiz.length) * 100
       const send = await authActionScore({
         state,
+        score,
         token: token.accessToken,
       });
       if (send) {
@@ -57,6 +52,14 @@ export default function Test({ navigation, route }) {
     } else {
       Alert.alert("Please answer all of the following questions.");
     }
+  }
+  async function send() {
+    setCheck(true)
+    setStatus(true);
+  }
+  if (check) {
+    senddata()
+    setCheck(false)
   }
   const getTest = async () => {
     const res = await apiservice({
@@ -74,7 +77,6 @@ export default function Test({ navigation, route }) {
     setchoiceIndex((preIndex) => index);
     setchoice(data);
   };
-
   return (
     <View style={styles.container}>
       <SafeAreaView />
@@ -97,7 +99,8 @@ export default function Test({ navigation, route }) {
               Score: {ans.filter((e) => e.myAns == e.Answer).length.toFixed()}/
               {quiz.length}
             </Text>
-          )}
+          )
+          }
           <View>
             <FlatList
               numColumns={1}
@@ -123,21 +126,21 @@ export default function Test({ navigation, route }) {
                           {
                             backgroundColor:
                               status &&
-                              ans.filter((value) => {
-                                return (
-                                  value.number == index && value.myAns == data
-                                );
-                              }).length > 0 // เลือก
+                                ans.filter((value) => {
+                                  return (
+                                    value.number == index && value.myAns == data
+                                  );
+                                }).length > 0 // เลือก
                                 ? ans.filter((value) => {
-                                    return value.number == index;
-                                  })[0].myAns == item.answer
+                                  return value.number == index;
+                                })[0].myAns == item.answer
                                   ? "rgba(174, 195, 160, 0.19)"
                                   : "rgba(202, 164, 159, 0.19)"
                                 : indexs == item.answer
-                                ? "#f0e9e4"
-                                : status && data == item.answer
-                                ? "rgba(174, 195, 160, 0.19)"
-                                : "#f0e9e4",
+                                  ? "#f0e9e4"
+                                  : status && data == item.answer
+                                    ? "rgba(174, 195, 160, 0.19)"
+                                    : "#f0e9e4",
                           },
                         ]}
                         onPress={() => {
@@ -146,6 +149,7 @@ export default function Test({ navigation, route }) {
                               return value.number == index;
                             }).length > 0
                           ) {
+                            console.log("In if")
                             setAns((val) =>
                               val.map((values) => {
                                 if (values.number == index) {
@@ -158,7 +162,8 @@ export default function Test({ navigation, route }) {
                                 }
                               })
                             );
-                          } else {
+                          }
+                          else {
                             setAns((val) =>
                               val.concat({
                                 number: index,
@@ -167,14 +172,6 @@ export default function Test({ navigation, route }) {
                               })
                             );
                           }
-                          setState({
-                            ...state,
-                            score: (
-                              (ans.filter((e) => e.myAns == e.Answer).length /
-                                quiz.length) *
-                              100
-                            ).toFixed(),
-                          });
                         }}
                       >
                         <FontAwesome
@@ -207,7 +204,9 @@ export default function Test({ navigation, route }) {
             />
           </View>
           {!status ? (
-            <TouchableOpacity onPress={send} style={styles.buttonDone}>
+            <TouchableOpacity onPress={
+              send
+            } style={styles.buttonDone}>
               <Text
                 style={{ fontSize: 18, fontFamily: "Roboto", color: "#484848" }}
               >

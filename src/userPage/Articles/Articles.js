@@ -499,14 +499,6 @@ export default function Articles({ navigation }) {
                                 }}
                               >
                                 <Text style={{ width: "10%" }}></Text>
-                                {/* <Text
-                                  style={[
-                                    styles.textDetail,
-                                    { fontFamily: "RobotoBold" },
-                                  ]}
-                                >
-                                  ● Coffee
-                                </Text> */}
                                 <Text style={styles.textDate1}>
                                   {moment(new Date(item.createdAt)).format(
                                     "DD/MM/YYYY"

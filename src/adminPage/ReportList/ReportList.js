@@ -87,7 +87,7 @@ export default function ReportList({ navigation }) {
         <FlatList
           numColumns={1}
           style={{ marginBottom: 20 }}
-          data={data.sort((a, b) => b.id - a.id)}
+          data={data != null ? data.sort((a, b) => b.id - a.id): data}
           renderItem={({ item, index }) => {
             return (
               <TouchableOpacity
