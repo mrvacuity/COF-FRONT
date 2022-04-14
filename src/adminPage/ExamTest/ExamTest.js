@@ -112,7 +112,7 @@ export default function ExamTest({ navigation, route }) {
               return (
                 <View style={{ borderBottomWidth: 0.5, paddingVertical: 17 }}>
                   <Text style={[styles.textLight, { marginBottom: 11 }]}>
-                    d{item.title}
+                    {item.title}
                   </Text>
                   {item.choice.map((data, index) => (
                     <View

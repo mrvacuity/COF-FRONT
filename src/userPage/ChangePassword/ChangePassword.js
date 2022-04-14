@@ -52,6 +52,7 @@ export default function ChangePassword({ navigation }) {
     if (res.status == 200) {
       setUser(res.data.result.id);
     } else {
+
     }
   };
   async function resetPassword() {
@@ -77,9 +78,9 @@ export default function ChangePassword({ navigation }) {
       } else {
         setModalVisible(true);
       }
-    } else if ( state.newpassword.length < 8 ) {
+    } else if (state.newpassword.length < 8) {
       Alert.alert("Password should be at least 8 characters long");
-    }else {
+    } else {
       Alert.alert("Please complete the information !");
     }
   }

@@ -25,17 +25,10 @@ import {
   Ionicons,
   EvilIcons,
 } from "@expo/vector-icons";
-import moment from "moment";
-import { authActionComment } from "../../action/authAction";
-import { useRecoilState } from "recoil";
-import { tokenState } from "../../recoil/recoil";
-import { apiservice } from "../../service/api";
-import { useIsFocused } from "@react-navigation/native";
 const { width, height } = Dimensions.get("screen");
 export default function AboutpHValue({ navigation, route }) {
   return (
     <View style={styles.container}>
-      <SafeAreaView />
       <View style={{ marginTop: Platform.OS === "ios" ? 0 : 30 }} />
       <View style={[styles.viewDetail]}>
         <View style={styles.viewHeader}>
@@ -76,7 +69,6 @@ export default function AboutpHValue({ navigation, route }) {
               <Text style={{ fontFamily: "RobotoBold", fontSize: 16, textAlign: 'justify', }}>5.10</Text>
             </View>
             <Text style={{ fontSize: 16 }}>{'         '}The longer the beans are roasted, the darker they become. The darker they become, the less acid they contain.</Text>
-            <Text>{'\n'}</Text>
             <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
               <Text style={{ fontFamily: "RobotoBold", fontSize: 16, textAlign: 'justify', }}>{'      • '}Shorter roasting times</Text>
               <Text style={{ fontSize: 16, }}>{'          '}produce light roast coffee beans, which are the most acidic.</Text>

@@ -25,14 +25,31 @@ import {
 const { width, height } = Dimensions.get("screen");
 import { useRecoilState, useRecoilValue } from "recoil";
 import { tokenState } from "../../recoil/recoil";
-export default function Menu({ navigation }) {
+import { apiservice } from "../../service/api";
+import { useIsFocused } from "@react-navigation/native";
+// import { apiservice } from "../service/api";
+
+
+export default function ReportList({ navigation }) {
   const [token, setToken] = useRecoilState(tokenState);
-  const data = [
-    { title: "Lesson", onPress: "EditLesson" },
-    { title: "Article", onPress: "EditArticle" },
-    { title: "Test", onPress: "EditTest" },
-    { title: "Report", onPress: "ReportList" },
-  ];
+  const [data,setData] = useState(null);
+  const focus = useIsFocused();
+
+  const getReport = async () => {
+    const res = await apiservice({
+      path: "/lesson/allreport",
+      method: "get",
+      token: token.accessToken,
+    });
+    if (res.status == 200) {
+      setData(res.data);
+    }
+  };
+  useEffect(() => {
+    if (focus) {
+        getReport()
+    }
+  }, [focus]);
   return (
     <View style={styles.container}>
       <SafeAreaView />
@@ -46,8 +63,15 @@ export default function Menu({ navigation }) {
             paddingHorizontal: 29,
           }}
         >
-          <Text style={{ width: "10%" }}></Text>
-          <Text style={styles.textTitle}>Menu</Text>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.goBack("");
+            }}
+            style={{ width: "10%" }}
+          >
+            <Entypo name="chevron-thin-left" size={24} color="#484848" />
+          </TouchableOpacity>
+          <Text style={styles.textTitle}>Report</Text>
 
           <TouchableOpacity
             style={{ width: "10%", alignItems: "flex-end" }}
@@ -63,16 +87,17 @@ export default function Menu({ navigation }) {
         <FlatList
           numColumns={1}
           style={{ marginBottom: 20 }}
-          data={data}
+          data={data.sort((a, b) => b.id - a.id)}
           renderItem={({ item, index }) => {
             return (
               <TouchableOpacity
+                style={[styles.button]}
                 onPress={() => {
-                  navigation.navigate(item.onPress);
+                  navigation.navigate("ReportDetail", item);
                 }}
-                style={styles.button}
               >
-                <Text style={styles.textSubject}>{item.title}</Text>
+                <Text style={[styles.textSubject,]}>UserID: {item.uid}</Text>
+                <Text style={styles.textSubject} numberOfLines={1} >Title: {item.title}</Text>
               </TouchableOpacity>
             );
           }}

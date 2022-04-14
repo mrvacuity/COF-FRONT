@@ -112,7 +112,7 @@ export default function ArticsDetail({ navigation, route }) {
       getProfile();
     }
   }, [focus]);
-
+  console.log(data)
   return (
     <View style={styles.container}>
       <SafeAreaView />

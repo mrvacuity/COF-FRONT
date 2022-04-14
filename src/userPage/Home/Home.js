@@ -179,26 +179,6 @@ export default function Home({ navigation }) {
                         }
                         ]}>{item.description}</Text>
                       </View>
-                      {/* <Text
-                        style={[
-                          styles.textLight,
-                          {
-                            fontSize: 13,
-                            color: "#484848",
-                            marginVertical: 12,
-                          },
-                        ]}
-                      >
-                        {item.title == "Plant"
-                          ? "Learn about the origin and characteristics of different types of the coffee tree including Arabica, Robusta, Excelsa, and Liberica."
-                          : item.title == "Harvest"
-                          ? "Learn how coffee beans are harvested and processed before they are ready to be roasted."
-                          : item.title == "Roasting"
-                          ? "Learn about the origin of coffee roasting and the different method of the coffee roasting process such as Light Roast, Medium Roast, and Dark Roast."
-                          : item.title == "Brew"
-                          ? "Leaning about methods of brewing your favorite coffee including how to make a cold brew or an espresso."
-                          : ""}
-                      </Text> */}
 
                       <Text
                         style={[
@@ -253,16 +233,6 @@ export default function Home({ navigation }) {
                             item.image_url,
                         }}
                       />
-                      {/* <View style={{ marginTop: 11 }}>
-                        <Text
-                          style={[
-                            styles.textLight,
-                            { fontSize: 11, color: "#484848" },
-                          ]}
-                        >
-                          {"Start >>>"}
-                        </Text>
-                      </View> */}
                     </View>
                   </TouchableOpacity>
                 );

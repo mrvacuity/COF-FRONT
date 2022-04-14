@@ -32,6 +32,7 @@ import { apiservice } from "../../service/api";
 import { useRecoilValue } from "recoil";
 import { tokenState } from "../../recoil/recoil";
 import moment from "moment";
+import { useIsFocused } from "@react-navigation/native";
 
 export default function Camara({ navigation }) {
   const cameraRef = useRef();
@@ -47,6 +48,7 @@ export default function Camara({ navigation }) {
   const [results, serResults] = useState(0);
   const [DefaultsImage, setDefaultsImage] = useState("");
   const token = useRecoilValue(tokenState);
+  const isFocused = useIsFocused();
 
   const [page, setPage] = useState(1);
   const [species, setspecies] = useState(false);
@@ -598,7 +600,7 @@ export default function Camara({ navigation }) {
               size={26} />
             </TouchableOpacity>
           </View>
-          {page == 1 && (
+          {page == 1 && isFocused && (
             <Camera
               style={styles.camera}
               type={type}

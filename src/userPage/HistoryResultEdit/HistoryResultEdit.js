@@ -32,7 +32,6 @@ export default function HistoryResultEdit({ navigation, route }) {
   const [edit, setedit] = useState(false);
   const [brand, setbrand] = useState(route?.params?.brand);
   const [source, setsource] = useState(route?.params?.source);
-  // const [quantity, setquantity] = useState(parseFloat(route?.params?.Sour)?.toFixed(2));
   const [quantity, setquantity] = useState(route?.params?.quantity);
   const [temp, settemp] = useState(route?.params?.temp);
   const [timeh, settimeh] = useState(route?.params?.timeh);
@@ -125,7 +124,17 @@ export default function HistoryResultEdit({ navigation, route }) {
           <View style={{ paddingHorizontal: 24 }}>
             <View style={styles.viewTopic}>
               <Text style={styles.textSuject}>
-                Result: <Text style={styles.textSujectLight}>Dark Roast</Text>
+                Result: <Text style={styles.textSujectLight}>
+                {parseFloat(route?.params?.Sour) >= 0 && parseFloat(route?.params?.Sour) <= 4.49
+                          ? "-"
+                          : parseFloat(route?.params?.Sour) >= 4.5 && parseFloat(route?.params?.Sour) <= 4.89
+                            ? "Light Roast"
+                            : parseFloat(route?.params?.Sour) >= 4.9 && parseFloat(route?.params?.Sour) <= 5.09
+                              ? "Medium Roast"
+                              : parseFloat(route?.params?.Sour) >= 5.1 && parseFloat(route?.params?.Sour) <= 6
+                                ? "Dark Roast"
+                                : parseFloat(route?.params?.Sour) >= 6.01 && parseFloat(route?.params?.Sour) <= 14 && "-"}
+                </Text>
               </Text>
               <Text style={styles.textDate}>
                 Date : {moment(route?.params?.createdAt).format("DD/MM/YYYY")}{" "}

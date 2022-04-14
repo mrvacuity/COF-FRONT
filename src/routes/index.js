@@ -43,7 +43,10 @@ import NewLesson from "../adminPage/NewLesson/NewLesson";
 import EditTest from "../adminPage/EditTest/EditTest";
 import ExamTest from "../adminPage/ExamTest/ExamTest";
 import AddQuizTest from "../adminPage/AddQuizTest/AddQuizTest";
-// EditArticsDetail.js
+import ReportList from "../adminPage/ReportList/ReportList";
+import ReportDetail from "../adminPage/ReportDetail/ReportDetail";
+
+
 const { width, height } = Dimensions.get("screen");
 
 const Stack = createStackNavigator();
@@ -72,6 +75,7 @@ function main() {
       <Stack.Screen name="ArticlesDetail" component={ArticsDetail} />
       <Stack.Screen name="Favorite" component={Favorite} />
       <Stack.Screen name="Post" component={Post} />
+      <Stack.Screen name="Camera" component={Camera} options={{unmountOnBlur: true}}/>
       <Stack.Screen name="CameraGuide" component={CameraGuide} />
       <Stack.Screen name="HomeGuide" component={HomeGuide} />
       <Stack.Screen name="AboutpHValue" component={AboutpHValue} />
@@ -84,6 +88,9 @@ function main() {
       <Stack.Screen name="EditTest" component={EditTest} />
       <Stack.Screen name="ExamTest" component={ExamTest} />
       <Stack.Screen name="AddQuizTest" component={AddQuizTest} />
+      <Stack.Screen name="ReportList" component={ReportList} />
+      <Stack.Screen name="ReportDetail" component={ReportDetail} />
+
     </Stack.Navigator>
   );
 }

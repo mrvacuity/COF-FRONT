@@ -86,15 +86,19 @@ export default function Favorite({ navigation }) {
                     comment_model: item.comment_models,
                   });
                 }}
-                style={styles.buttonDetail}
+                style={[styles.buttonDetail, {
+                  borderRadius: 15,
+                  backgroundColor: "#FBF9F8",
+                  borderColor: "#FBF9F8",
+                }]}
               >
                 <View style={{ width: "35%" }}>
                   <Image
                     style={{
-                      width: 103,
+                      width: "90%",
                       height: 103,
                       borderRadius: 15,
-                      backgroundColor: "#ccc",
+                      backgroundColor: "#cccccc",
                     }}
                     source={{
                       uri:
@@ -169,14 +173,14 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   buttonDetail: {
+    borderWidth: 0.2,
+    minHeight: 123,
+    paddingTop: 10,
+    paddingHorizontal: 18,
+    borderColor: "#484848",
     width: "100%",
     flexDirection: "row",
     marginTop: 12,
-    borderWidth: 0.2,
-    minHeight: 123,
-    paddingVertical: 10,
-    paddingHorizontal: 18,
-    borderColor: "#484848",
   },
   textPopular: {
     fontSize: 12,

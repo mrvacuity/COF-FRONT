@@ -253,7 +253,6 @@ export default function Login({ navigation }) {
   }
   async function register() {
     // console.log(regisBody)
-    console.log("Hrello")
     if (
       // regisBody.birth_date != "" &&
       regisBody.email != "" &&
@@ -269,7 +268,6 @@ export default function Login({ navigation }) {
         method: "post",
         body: regisBody,
       });
-      console.log("Hrello")
       if (res.status == 200) {
         Alert.alert("Register success!");
         setImage(null);

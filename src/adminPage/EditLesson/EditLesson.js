@@ -64,6 +64,7 @@ export default function EditLesson({ navigation }) {
 
     if (res.status == 200) {
       setLesson(res.data);
+      // console.log(lesson)
     } else {
     }
   };

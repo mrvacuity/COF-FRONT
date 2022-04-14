@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   FlatList,
   ScrollView,
+  Platform,
 } from "react-native";
 import {
   MaterialCommunityIcons,
@@ -75,7 +76,7 @@ export default function Lesson({ navigation, route }) {
           <View>
             <FlatList
               style={{}}
-              data={data}
+              data={data.sort((a,b) => a.id - b.id )}
               horizontal
               renderItem={({ item, index }) => {
                 return (
@@ -209,7 +210,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 300,
     backgroundColor: "#E5E5E5",
-    borderRadius: 20,
+    borderRadius: Platform.OS == 'android' ? 0 : 20,
     marginVertical: 18,
     justifyContent: "center",
     alignItems: "center",

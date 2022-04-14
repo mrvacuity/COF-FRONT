@@ -38,7 +38,6 @@ export default function HistoryResult({ navigation }) {
       method: "get",
       token: token.accessToken,
     });
-    console.log(res[0]);
     if (res.status == 200) {
       setData(res.data);
     }
@@ -69,9 +68,7 @@ export default function HistoryResult({ navigation }) {
         <FlatList
           numColumns={1}
           style={{}}
-          inverted
-          // data={data.sort((a, b) => b.id - a.id)}
-          data = {data}
+          data={data.sort((a, b) => b.id - a.id)}
           renderItem={({ item, index }) => {
             return (
               <TouchableOpacity
@@ -86,7 +83,7 @@ export default function HistoryResult({ navigation }) {
                   {/* pH{parseFloat(item?.Sour)?.toFixed(2)} */}
                   My Memo
                   {" "}
-                  {index+1}
+                  {item.id+1}
                 </Text>
                 <Text style={styles.textDate}>
                   Date : {moment(item?.createdAt).format("DD/MM/YYYY")} Time :{" "}
