@@ -483,7 +483,7 @@ export default function Articles({ navigation }) {
                             />
                           </View>
                           <View
-                          style={styles.viewtextDetail}
+                            style={styles.viewtextDetail}
                           >
                             <View
                               style={{

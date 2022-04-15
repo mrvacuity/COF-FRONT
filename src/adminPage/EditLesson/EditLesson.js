@@ -223,105 +223,106 @@ export default function EditLesson({ navigation }) {
         }}
       >
         <View style={styles.bgModal}>
-        <ScrollView keyboardShouldPersistTaps='handled'
-        style={{ width: "100%",flex: 1, height:'100%',
-         marginTop: '40%',
-         }}>
-          <View style={[styles.viewDetailModal]}>
-            <TouchableOpacity
-              onPress={pickImage}
-              style={{
-                width: "70%",
-                height: 200,
-                borderWidth: 0.3,
-                borderRadius: 10,
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              {state.image_url != "" ? (
-                <Image
-                  resizeMode="stretch"
-                  style={{ width: "100%", height: 200 }}
-                  source={{
-                    uri:
-                      "http://165.22.251.6:5000/api/image/getimage/" +
-                      state.image_url,
-                  }}
-                />
-              ) : (
-                <AntDesign name="pluscircleo" size={24} color="#CCCCCC" />
-              )}
-            </TouchableOpacity>
-
-            <View style={{ width: "70%", marginTop: 10}}>
-              <TextInput
-                value={state.title}
-                onChangeText={(text) => {
-                  setState({ ...state, title: text });
-                }}
-                placeholder="Type name of new lesson ...."
-                style={styles.textInput}
-              />
-            </View>
-            <View style={{
-              width: "70%",
-              height: "20%",
-              marginTop: 10,
-              // backgroundColor:"red",
+          <ScrollView keyboardShouldPersistTaps='handled'
+            style={{
+              width: "100%", flex: 1, height: '100%',
+              marginTop: '40%',
             }}>
-              <TextInput
-                value={state.description}
-                onChangeText={(text) => {
-                  setState({ ...state, description: text });
+            <View style={[styles.viewDetailModal]}>
+              <TouchableOpacity
+                onPress={pickImage}
+                style={{
+                  width: "70%",
+                  height: 200,
+                  borderWidth: 0.3,
+                  borderRadius: 10,
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
-                placeholder="Enter your description"
-                multiline
-                style={[
-                  styles.textInput,
-                  {
-                    height: "100%",
-                    width: "100%",
-                    backgroundColor: "#FFFFFF",
-                    textAlignVertical: "top",
-                  }
-                ]}
-              />
-            </View>
+              >
+                {state.image_url != "" ? (
+                  <Image
+                    resizeMode="stretch"
+                    style={{ width: "100%", height: 200 }}
+                    source={{
+                      uri:
+                        "http://165.22.251.6:5000/api/image/getimage/" +
+                        state.image_url,
+                    }}
+                  />
+                ) : (
+                  <AntDesign name="pluscircleo" size={24} color="#CCCCCC" />
+                )}
+              </TouchableOpacity>
+
+              <View style={{ width: "70%", marginTop: 10 }}>
+                <TextInput
+                  value={state.title}
+                  onChangeText={(text) => {
+                    setState({ ...state, title: text });
+                  }}
+                  placeholder="Type name of new lesson ...."
+                  style={styles.textInput}
+                />
+              </View>
+              <View style={{
+                width: "70%",
+                height: "20%",
+                marginTop: 10,
+                // backgroundColor:"red",
+              }}>
+                <TextInput
+                  value={state.description}
+                  onChangeText={(text) => {
+                    setState({ ...state, description: text });
+                  }}
+                  placeholder="Enter your description"
+                  multiline
+                  style={[
+                    styles.textInput,
+                    {
+                      height: "100%",
+                      width: "100%",
+                      backgroundColor: "#FFFFFF",
+                      textAlignVertical: "top",
+                    }
+                  ]}
+                />
+              </View>
 
 
 
-            <View style={{ flexDirection: "row" }}>
-              {idEdit != undefined ? (
+              <View style={{ flexDirection: "row" }}>
+                {idEdit != undefined ? (
+                  <TouchableOpacity
+                    onPress={EditLesson}
+                    style={styles.buttonModal}
+                  >
+                    <Text style={[styles.textButton, { fontFamily: "Roboto" }]}>
+                      edit
+                    </Text>
+                  </TouchableOpacity>
+                ) : (
+                  <TouchableOpacity onPress={Create} style={styles.buttonModal}>
+                    <Text style={[styles.textButton, { fontFamily: "Roboto" }]}>
+                      Save
+                    </Text>
+                  </TouchableOpacity>
+                )}
+
                 <TouchableOpacity
-                  onPress={EditLesson}
-                  style={styles.buttonModal}
+                  onPress={() => {
+                    setState({ ...state, title: "", image_url: "" });
+                    setModalVisible(!modalVisible);
+                  }}
+                  style={[styles.buttonModal, { marginLeft: 40 }]}
                 >
                   <Text style={[styles.textButton, { fontFamily: "Roboto" }]}>
-                    edit
+                    Cancel
                   </Text>
                 </TouchableOpacity>
-              ) : (
-                <TouchableOpacity onPress={Create} style={styles.buttonModal}>
-                  <Text style={[styles.textButton, { fontFamily: "Roboto" }]}>
-                    Save
-                  </Text>
-                </TouchableOpacity>
-              )}
-
-              <TouchableOpacity
-                onPress={() => {
-                  setState({ ...state, title: "", image_url: "" });
-                  setModalVisible(!modalVisible);
-                }}
-                style={[styles.buttonModal, { marginLeft: 40 }]}
-              >
-                <Text style={[styles.textButton, { fontFamily: "Roboto" }]}>
-                  Cancel
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </View></ScrollView>
+              </View>
+            </View></ScrollView>
         </View>
       </Modal>
       <Modal

@@ -125,7 +125,7 @@ export default function Home({ navigation }) {
                   HOME
                 </Text>
                 <Text style={
-                  {width:'10%'}
+                  { width: '10%' }
                 }>
                 </Text>
               </View>

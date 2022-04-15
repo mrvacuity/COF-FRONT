@@ -29,7 +29,6 @@ export default function Test({ navigation, route }) {
   const [quiz, setQuiz] = useState([]);
   const [choice, setchoice] = useState("");
   const [ans, setAns] = useState([]);
-  const [check, setCheck] = useState(false);
   const [state, setState] = useState({
     Type: "POSTTEST",
     lesson_id: route.params.id,
@@ -38,9 +37,11 @@ export default function Test({ navigation, route }) {
   useEffect(() => {
     getTest();
   }, []);
-  const senddata = async () => {
+
+  const send = async () => {
     if (ans.length == quiz.length) {
-      var score = (ans.filter((e) => e.myAns == e.Answer).length.toFixed() / quiz.length) * 100
+      var score = ((ans.filter((e) => e.myAns == e.Answer).length.toFixed() / quiz.length) * 100).toFixed()
+      console.log(score)
       const send = await authActionScore({
         state,
         score,
@@ -52,14 +53,6 @@ export default function Test({ navigation, route }) {
     } else {
       Alert.alert("Please answer all of the following questions.");
     }
-  }
-  async function send() {
-    setCheck(true)
-    setStatus(true);
-  }
-  if (check) {
-    senddata()
-    setCheck(false)
   }
   const getTest = async () => {
     const res = await apiservice({
@@ -149,7 +142,6 @@ export default function Test({ navigation, route }) {
                               return value.number == index;
                             }).length > 0
                           ) {
-                            console.log("In if")
                             setAns((val) =>
                               val.map((values) => {
                                 if (values.number == index) {

@@ -186,7 +186,7 @@ export default function ArticsDetail({ navigation, route }) {
                 Author:
                 <Text style={{ fontFamily: "Roboto", color: "#484848" }}>
                   {/* {data.user_model.first_name + " " + data.user_model.last_name} */}
-                  {" "+data.user_model.username}
+                  {" " + data.user_model.username}
                 </Text>
               </Text>
               <Text style={styles.textRoboto}>
@@ -247,7 +247,7 @@ export default function ArticsDetail({ navigation, route }) {
                           color="#484848"
                         />
                         <Text style={styles.textDate}>
-                          {"  "+item.comment_models.username}
+                          {"  " + item.comment_models.username}
                         </Text>
                       </View>
                       <Text style={styles.textDate}>

@@ -162,7 +162,7 @@ export default function NewLesson({ navigation, route }) {
                   style={{
                     width: "100%",
                     minHeight: 165,
-                    height:  300,
+                    height: 300,
                     // height:
                     //   state.image_url.height != "" &&
                     //   state.image_url.height != undefined &&

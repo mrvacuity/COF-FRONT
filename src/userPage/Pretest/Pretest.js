@@ -32,7 +32,6 @@ export default function Pretest({ navigation, route }) {
 
   const [state, setstate] = useState({
     lesson_id: route.params.id,
-    score: "",
   });
 
   useEffect(() => {
@@ -40,16 +39,11 @@ export default function Pretest({ navigation, route }) {
   }, []);
   async function send() {
     if (ans.length == quiz.length) {
-      // setstate({
-      //   ...state,
-      //   score: (
-      //     (ans.filter((e) => e.myAns == e.Answer).length / quiz.length) *
-      //     100
-      //   ).toFixed(),
-      // });
-      // console.log(state);
+      var score = ((ans.filter((e) => e.myAns == e.Answer).length / quiz.length) * 100).toFixed()
+      console.log(score)
       const send = await authActionScore({
         state,
+        score,
         token: token.accessToken,
       });
       if (send) {
@@ -136,15 +130,6 @@ export default function Pretest({ navigation, route }) {
                             Answer: item.answer,
                           })
                         );
-                        //.......................
-                        setstate({
-                          ...state,
-                          score: (
-                            (ans.filter((e) => e.myAns == e.Answer).length /
-                              quiz.length) *
-                            100
-                          ).toFixed(),
-                        });
                       }}
                     >
                       <FontAwesome

@@ -58,7 +58,7 @@ export default function Camara({ navigation }) {
   const [description, setdescription] = useState("-");
   const [state, setState] = useState({
     brand: "-",
-    source:"-",
+    source: "-",
     quantity: 0,
     temp: 0,
     timeh: 0,
@@ -153,7 +153,7 @@ export default function Camara({ navigation }) {
             setModalVisible1(!modalVisible1);
           }}
         >
-          <View style={[styles.bgModal,{
+          <View style={[styles.bgModal, {
           }]}>
 
             <View style={[styles.viewAboutpHModal,
@@ -166,63 +166,65 @@ export default function Camara({ navigation }) {
                 style={{
                   position: "absolute",
                   right: 10,
-                  top: 10 }}
+                  top: 10
+                }}
               >
                 <Ionicons name="close-outline" size={24} color="#000000" />
               </TouchableOpacity>
 
               <View style={{
-                  alignItems: 'flex-start',
-                  justifyContent:'center',
-                  width:'80%',
-                  height:'100%',
-                  // backgroundColor:'yellow',
+                alignItems: 'flex-start',
+                justifyContent: 'center',
+                width: '80%',
+                height: '100%',
+                // backgroundColor:'yellow',
+              }}
+              >
+                <Image
+                  style={{
+                    marginLeft: '25%',
+                    // marginTop:'10%',
+                    width: '50%',
+                    height: '15%'
+                  }}
+                  source={require('../../img/roast.png')} />
+                <Text>{'\n'}</Text>
+                <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+                  <Text style={{ fontFamily: "RobotoBold", fontSize: 16, textAlign: 'justify', }}>The average pH value </Text>
+                  <Text style={{ fontSize: 16, textAlign: 'justify', }}>is around </Text>
+                  <Text style={{ fontFamily: "RobotoBold", fontSize: 16, textAlign: 'justify', }}>4.85</Text>
+                  <Text style={{ fontSize: 16, textAlign: 'justify', }}>to </Text>
+                  <Text style={{ fontFamily: "RobotoBold", fontSize: 16, textAlign: 'justify', }}>5.10</Text>
+                </View>
+                <Text style={{ fontSize: 16 }}>{'      '}The longer the beans are roasted, the darker they become. The darker they become, the less acid they contain.</Text>
+                <Text>{'\n'}</Text>
+                <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+                  <Text style={{ fontFamily: "RobotoBold", fontSize: 16, textAlign: 'justify', }}>{'      • '}Shorter roasting times</Text>
+                  <Text style={{ fontSize: 16, }}>{'          '}produce light roast coffee beans, which are the most acidic.</Text>
+                </View>
+                <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+                  <Text style={{ fontFamily: "RobotoBold", fontSize: 16, textAlign: 'justify', }}>{'      • '}Medium roast times</Text>
+                  <Text style={{ fontSize: 16, }}>{'          '}yield medium roasts with a light brown color and medium levels of acidity.</Text>
+                </View>
+                <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+                  <Text style={{ fontFamily: "RobotoBold", fontSize: 16, textAlign: 'justify', }}>{'      • '}Longer roasting times</Text>
+                  <Text style={{ fontSize: 16, }}>{'          '}processes produce dark beans, which contain the lowest levels of acid.</Text>
+                </View>
+                <Text>{'\n'}</Text>
+                <View style={{
+                  flexDirection: 'row', flexWrap: 'wrap',
+                  // backgroundColor: "green" ,
+                  // height : "100%"
                 }}
                 >
-                  <Image
-                      style={{
-                        marginLeft:'25%',
-                        // marginTop:'10%',
-                        width:'50%',
-                        height: '15%'
-                      }}
-                      source={require('../../img/roast.png')} />
-                      <Text>{'\n'}</Text>
-                  <View style={{ flexDirection: 'row',flexWrap: 'wrap' }}>
-                    <Text style={{ fontFamily: "RobotoBold", fontSize:16,textAlign: 'justify',}}>The average pH value </Text>
-                    <Text style={{fontSize:16,textAlign: 'justify',}}>is around </Text>
-                    <Text style={{ fontFamily: "RobotoBold", fontSize:16, textAlign: 'justify',}}>4.85</Text>
-                    <Text style ={{fontSize:16,textAlign: 'justify',}}>to </Text>
-                    <Text style={{ fontFamily: "RobotoBold", fontSize:16, textAlign: 'justify',}}>5.10</Text>
-                  </View>
-                  <Text style={{  fontSize:16}}>{'      '}The longer the beans are roasted, the darker they become. The darker they become, the less acid they contain.</Text>
-                  <Text>{'\n'}</Text>
-                  <View style = {{flexDirection:'row', flexWrap:'wrap'}}>
-                    <Text style = {{ fontFamily: "RobotoBold", fontSize:16, textAlign: 'justify',}}>{'      • '}Shorter roasting times</Text>
-                    <Text style = {{fontSize:16,}}>{'          '}produce light roast coffee beans, which are the most acidic.</Text>
-                  </View>
-                  <View style = {{flexDirection:'row', flexWrap:'wrap'}}>
-                    <Text style = {{ fontFamily: "RobotoBold", fontSize:16, textAlign: 'justify',}}>{'      • '}Medium roast times</Text>
-                    <Text style ={{fontSize:16,}}>{'          '}yield medium roasts with a light brown color and medium levels of acidity.</Text>
-                  </View>
-                  <View style = {{flexDirection:'row', flexWrap:'wrap'}}>
-                    <Text style = {{ fontFamily: "RobotoBold", fontSize:16, textAlign: 'justify',}}>{'      • '}Longer roasting times</Text>
-                    <Text style ={{fontSize:16,}}>{'          '}processes produce dark beans, which contain the lowest levels of acid.</Text>
-                  </View>
-                  <Text>{'\n'}</Text>
-                    <View style={{ flexDirection: 'row', flexWrap:'wrap',
-                        // backgroundColor: "green" ,
-                        // height : "100%"
-                       }}
-                    >
-                    <Text style={{ fontFamily: "RobotoBold", fontSize:16,}}>Hints</Text>
-                    <Text style={{fontSize:16}}>{'          '}You can make coffee less acidic by simply adding milk. The calcium in milk neutralizes some of the acids in the coffee. </Text>
-                  </View>
-                  <Text>{'\n'}</Text>
-                  {/* <Text style={{fontSize:16}}>pH 4.80 - 4.89 = Very sour</Text>
+                  <Text style={{ fontFamily: "RobotoBold", fontSize: 16, }}>Hints</Text>
+                  <Text style={{ fontSize: 16 }}>{'          '}You can make coffee less acidic by simply adding milk. The calcium in milk neutralizes some of the acids in the coffee. </Text>
+                </View>
+                <Text>{'\n'}</Text>
+                {/* <Text style={{fontSize:16}}>pH 4.80 - 4.89 = Very sour</Text>
                   <Text style={{fontSize:16}}>pH 4.90 - 5.09 = Sour</Text>
                   <Text style={{fontSize:16}}>pH 5.10 - 5.30 = Not too sour</Text> */}
-                </View>
+              </View>
             </View>
 
           </View>
@@ -256,9 +258,9 @@ export default function Camara({ navigation }) {
                 >
                   <Text style={styles.text}>Brand : </Text>
                   <TextInput
-                  onChangeText={(text) => {
-                    setState({ ...state, brand: text});
-                  }}
+                    onChangeText={(text) => {
+                      setState({ ...state, brand: text });
+                    }}
                     style={{
                       width: "60%",
                       borderRadius: 5,
@@ -360,9 +362,9 @@ export default function Camara({ navigation }) {
                 >
                   <Text style={styles.text}>Source : </Text>
                   <TextInput
-                  onChangeText={(text) => {
-                    setState({ ...state, source: text});
-                  }}
+                    onChangeText={(text) => {
+                      setState({ ...state, source: text });
+                    }}
                     style={{
                       width: "58%",
                       borderRadius: 5,
@@ -385,10 +387,10 @@ export default function Camara({ navigation }) {
                 >
                   <Text style={styles.text}>Quantity : </Text>
                   <TextInput
-                  keyboardType="number-pad"
-                  onChangeText={(value) => {
-                    setState({ ...state, quantity: value});
-                  }}
+                    keyboardType="number-pad"
+                    onChangeText={(value) => {
+                      setState({ ...state, quantity: value });
+                    }}
                     style={{
                       width: "43%",
                       borderRadius: 5,
@@ -417,7 +419,7 @@ export default function Camara({ navigation }) {
                     maxLength={3}
                     keyboardType="number-pad"
                     onChangeText={(value) => {
-                      setState({ ...state, temp: value});
+                      setState({ ...state, temp: value });
                     }}
                     style={{
                       width: "20%",
@@ -445,7 +447,7 @@ export default function Camara({ navigation }) {
                     keyboardType="numeric"
                     maxLength={3}
                     onChangeText={(value) => {
-                      setState({ ...state, timeh: value});
+                      setState({ ...state, timeh: value });
                     }}
                     style={{
                       width: "20%",
@@ -463,7 +465,7 @@ export default function Camara({ navigation }) {
                   <TextInput
                     keyboardType="numeric"
                     onChangeText={(value) => {
-                      setState({ ...state, timem: value});
+                      setState({ ...state, timem: value });
                     }}
                     maxLength={2}
                     style={{
@@ -495,7 +497,7 @@ export default function Camara({ navigation }) {
 
                 <TextInput
                   placeholderTextColor={"#484848"}
-                  onChangeText = {setdescription}
+                  onChangeText={setdescription}
                   multiline
                   style={[
                     styles.text,
@@ -520,33 +522,33 @@ export default function Camara({ navigation }) {
                   </TouchableOpacity>
                   <TouchableOpacity
                     onPress={async () => {
-                      if ( !isNaN(state.quantity) && !isNaN(state.temp) && !isNaN(state.timeh) && !isNaN(state.timem) ){
-                      const res1 = await apiservice({
-                        path: "/lesson/createhistory",
-                        method: "post",
-                        body: {
-                          Sour: results,
-                          image_url: DefaultsImage,
-                          brand: state.brand,
-                          source:state.source,
-                          species: select,
-                          quantity: state.quantity,
-                          temp: state.temp,
-                          timeh: state.timeh,
-                          timem: state.timem,
-                          description: description
-                        },
-                        token: token.accessToken,
-                      });
-                      if (res1.status == 200) {
-                        setPage(1);
-                        setModalVisible(false);
+                      if (!isNaN(state.quantity) && !isNaN(state.temp) && !isNaN(state.timeh) && !isNaN(state.timem)) {
+                        const res1 = await apiservice({
+                          path: "/lesson/createhistory",
+                          method: "post",
+                          body: {
+                            Sour: results,
+                            image_url: DefaultsImage,
+                            brand: state.brand,
+                            source: state.source,
+                            species: select,
+                            quantity: state.quantity,
+                            temp: state.temp,
+                            timeh: state.timeh,
+                            timem: state.timem,
+                            description: description
+                          },
+                          token: token.accessToken,
+                        });
+                        if (res1.status == 200) {
+                          setPage(1);
+                          setModalVisible(false);
+                        }
+                      } else if (isNaN(state.quantity)) {
+                        Alert.alert("Quantity should be number such as 2, 2.5, 5!!")
+                      } else {
+                        Alert.alert("Temp, Time sholud be integer such as 2, 10, 20!!")
                       }
-                    } else if ( isNaN(state.quantity) ){
-                      Alert.alert("Quantity should be number such as 2, 2.5, 5!!")
-                    } else {
-                      Alert.alert("Temp, Time sholud be integer such as 2, 10, 20!!")
-                    }
                     }}
                     style={{
                       width: width * 0.28,
@@ -596,8 +598,8 @@ export default function Camara({ navigation }) {
                 navigation.navigate("HistoryResult");
               }}>
               <MaterialIcons
-              name = "history-edu"
-              size={26} />
+                name="history-edu"
+                size={26} />
             </TouchableOpacity>
           </View>
           {page == 1 && isFocused && (
@@ -893,8 +895,10 @@ export default function Camara({ navigation }) {
                   <Text
                     style={[
                       styles.textSujectLight,
-                      { marginVertical: 5,
-                        marginBottom: Platform.OS == 'android' ? height * 0.15 : 50,},
+                      {
+                        marginVertical: 5,
+                        marginBottom: Platform.OS == 'android' ? height * 0.15 : 50,
+                      },
                     ]}
                   >
                     {data >= 0 && data <= 4.49
@@ -913,9 +917,9 @@ export default function Camara({ navigation }) {
           )}
           {page == 3 && (
             <TouchableOpacity
-            onPress={() => {
-              navigation.navigate("AboutpHValue");
-            }}
+              onPress={() => {
+                navigation.navigate("AboutpHValue");
+              }}
               style={{
                 width: 160,
                 height: 67,
@@ -1053,8 +1057,8 @@ const styles = StyleSheet.create({
   },
   viewAboutpHModal: {
     width: "85%",
-    height:"100%",
-    marginTop:"25%",
+    height: "100%",
+    marginTop: "25%",
     backgroundColor: "#FFFFFF",
     borderRadius: 20,
     alignSelf: "center",

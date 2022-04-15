@@ -10,7 +10,7 @@ export async function authActionEditProfile({ state, token }) {
     if (response.status == 200) {
       return response.data;
     } else {
-      console.log(response);
+      console.log(response,'asd');
       return false;
     }
   } catch (error) {
@@ -35,7 +35,7 @@ export async function authActionScore({ state, score, token }) {
     if (response.status == 200) {
       return response.data;
     } else {
-      console.log(response);
+      console.log(response,'asd');
       return false;
     }
   } catch (error) {

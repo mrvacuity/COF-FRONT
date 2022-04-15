@@ -76,7 +76,7 @@ export default function Lesson({ navigation, route }) {
           <View>
             <FlatList
               style={{}}
-              data={data.sort((a,b) => a.id - b.id )}
+              data={data.sort((a, b) => a.id - b.id)}
               horizontal
               renderItem={({ item, index }) => {
                 return (
@@ -139,7 +139,7 @@ export default function Lesson({ navigation, route }) {
                   play={false}
                   videoId={data[tab].video_url}
                 />
-            </View>
+              </View>
             )}
           </View>
         </View>
