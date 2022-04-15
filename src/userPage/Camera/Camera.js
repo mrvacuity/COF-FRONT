@@ -63,6 +63,7 @@ export default function Camara({ navigation }) {
     temp: 0,
     timeh: 0,
     timem: 0,
+    timer: 0
   });
 
   useEffect(() => {
@@ -82,7 +83,6 @@ export default function Camara({ navigation }) {
     let filename = localUri.split("/").pop();
     let match = /\.(\w+)$/.exec(filename);
     let type = match ? `image/${match[1]}` : `image`;
-    // let formData = new FormData();
     setimageTODO({ uri: localUri, name: filename, type });
 
     const base64upload = await apiservice({
@@ -523,6 +523,7 @@ export default function Camara({ navigation }) {
                   <TouchableOpacity
                     onPress={async () => {
                       if (!isNaN(state.quantity) && !isNaN(state.temp) && !isNaN(state.timeh) && !isNaN(state.timem)) {
+                        console.log(state.timer)
                         const res1 = await apiservice({
                           path: "/lesson/createhistory",
                           method: "post",
@@ -536,6 +537,7 @@ export default function Camara({ navigation }) {
                             temp: state.temp,
                             timeh: state.timeh,
                             timem: state.timem,
+                            timer: state.timer,
                             description: description
                           },
                           token: token.accessToken,
@@ -614,7 +616,7 @@ export default function Camara({ navigation }) {
             <Image
               style={[
                 styles.camera,
-                { width: width * 0.9, backgroundColor: "#000" },
+                { width: width * 0.937, backgroundColor: "#000" },
               ]}
               source={{
                 uri:
@@ -665,45 +667,6 @@ export default function Camara({ navigation }) {
                   </View>
                   <Text style={{ fontFamily: "RobotoBold", }}>white background</Text>
                 </View>
-                {/* <TouchableOpacity
-              onPress={() => {
-                navigation.navigate("AboutpHValue");
-              }}
-              style={{
-                width: 160,
-                height: 67,
-
-                position: "absolute",
-                bottom: 0,
-                alignSelf: "center",
-              }}
-            >
-              <View
-                style={{
-                  width: 60,
-                  height: 18,
-                  borderTopRightRadius: 20,
-                  borderTopLeftRadius: 20,
-                  justifyContent: "center",
-                  alignItems: "center",
-                  alignSelf: "center",
-                }}
-              >
-              </View>
-              <View
-                style={{
-                  width: 160,
-                  height: 49,
-                  backgroundColor: "#FFF",
-                  borderTopRightRadius: 20,
-                  borderTopLeftRadius: 20,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Text style={styles.textSujectLight}>About pH Value</Text>
-              </View>
-            </TouchableOpacity> */}
               </View>
             </View>
           ) : page == 2 ? (
@@ -713,6 +676,7 @@ export default function Camara({ navigation }) {
                   setResult(true);
                   let formData = new FormData();
                   formData.append("file", imageTODO);
+                  const time_s = new Date();
                   const res = await axios.post(
                     "https://getprediction-eb7wj7y6sa-as.a.run.app",
                     formData,
@@ -720,7 +684,10 @@ export default function Camara({ navigation }) {
                       headers: { "Content-Type": "multipart/form-data" },
                     }
                   );
-
+                  const time_e = new Date();
+                  const diff = ((time_e - time_s) * 0.001).toFixed(2);
+                  console.log(diff)
+                  setState({ ...state, timer: diff });
                   if (res.status == 200) {
                     serResults(res.data["Prediction (pH)"]);
                     setdata(res.data["Prediction (pH)"]);
@@ -821,6 +788,15 @@ export default function Camara({ navigation }) {
                       <Feather name="edit-3" size={20} color="#484848" />
                     </TouchableOpacity>
                   </View>
+
+                  <View style={[styles.viewTopic,{marginTop: 5}]}>
+                    <Text style={styles.textSuject}>
+                      Run time:
+                      <Text style={styles.textSujectLight}> {state.timer} s.</Text>
+                    </Text>
+                  </View>
+
+
                   <View style={styles.viewTopic}>
                     <Text style={styles.textSujectLight}>Sour</Text>
                     <Text style={styles.textSujectLight}>

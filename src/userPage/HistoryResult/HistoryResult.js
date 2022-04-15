@@ -80,7 +80,6 @@ export default function HistoryResult({ navigation }) {
                 style={styles.list}
               >
                 <Text style={styles.textSubject}>
-                  {/* pH{parseFloat(item?.Sour)?.toFixed(2)} */}
                   My Memo
                   {" "}
                   {item.id+1}
