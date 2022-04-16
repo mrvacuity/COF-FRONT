@@ -788,15 +788,13 @@ export default function Camara({ navigation }) {
                       <Feather name="edit-3" size={20} color="#484848" />
                     </TouchableOpacity>
                   </View>
-
-                  <View style={[styles.viewTopic,{marginTop: 5}]}>
-                    <Text style={styles.textSuject}>
-                      Run time:
-                      <Text style={styles.textSujectLight}> {state.timer} s.</Text>
-                    </Text>
-                  </View>
-
-
+            <View style={[styles.viewTopic, {marginTop: 0}]}>
+              <Text>{" "}</Text>
+              <Text style={styles.textDate}>
+                Run time :
+                {" "}{state.timer == undefined || null ? '-' : state.timer} s.
+              </Text>
+            </View>
                   <View style={styles.viewTopic}>
                     <Text style={styles.textSujectLight}>Sour</Text>
                     <Text style={styles.textSujectLight}>

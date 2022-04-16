@@ -141,12 +141,15 @@ export default function HistoryResultEdit({ navigation, route }) {
                 Time : {moment(route?.params?.createdAt).format("HH:mm")}
               </Text>
             </View>
-            <View style={[styles.viewTopic,{marginTop: 5}]}>
-                    <Text style={styles.textSuject}>
-                      Run time:
-                      <Text style={styles.textSujectLight}> {route?.params?.timer == undefined || null ? '-' : route?.params?.timer} s.</Text>
-                    </Text>
+
+            <View style={[styles.viewTopic, {marginTop: 0}]}>
+              <Text>{" "}</Text>
+              <Text style={styles.textDate}>
+                Run time :
+                {" "}{route?.params?.timer == undefined || null ? '-' : route?.params?.timer} s.
+              </Text>
             </View>
+            
             <View style={styles.viewTopic}>
               <Text style={styles.textSujectLight}>Sour</Text>
               <Text style={styles.textSujectLight}>
