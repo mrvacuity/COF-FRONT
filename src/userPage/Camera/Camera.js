@@ -84,7 +84,7 @@ export default function Camara({ navigation }) {
     let match = /\.(\w+)$/.exec(filename);
     let type = match ? `image/${match[1]}` : `image`;
     setimageTODO({ uri: localUri, name: filename, type });
-
+    console.log(result.uri)
     const base64upload = await apiservice({
       path: "/image/create",
       method: "post",
@@ -93,7 +93,7 @@ export default function Camara({ navigation }) {
         base64: "data:image/png;base64," + result.base64,
       },
     });
-
+    console.log(base64upload.data)
     setDefaultsImage(base64upload.data.imageRefId);
     setPage(2);
   };
@@ -788,13 +788,13 @@ export default function Camara({ navigation }) {
                       <Feather name="edit-3" size={20} color="#484848" />
                     </TouchableOpacity>
                   </View>
-            <View style={[styles.viewTopic, {marginTop: 0}]}>
-              <Text>{" "}</Text>
-              <Text style={styles.textDate}>
-                Run time :
-                {" "}{state.timer == undefined || null ? '-' : state.timer} s.
-              </Text>
-            </View>
+                  <View style={[styles.viewTopic, { marginTop: 0 }]}>
+                    <Text>{" "}</Text>
+                    <Text style={styles.textDate}>
+                      Run time :
+                      {" "}{state.timer == undefined || null ? '-' : state.timer} s.
+                    </Text>
+                  </View>
                   <View style={styles.viewTopic}>
                     <Text style={styles.textSujectLight}>Sour</Text>
                     <Text style={styles.textSujectLight}>

@@ -10,9 +10,6 @@ import {
   TouchableOpacity,
   FlatList,
   ScrollView,
-  Modal,
-  Alert,
-  Share,
 } from "react-native";
 import {
   MaterialCommunityIcons,
@@ -137,19 +134,8 @@ export default function ArticsDetail({ navigation, route }) {
             </TouchableOpacity>
             <Text style={styles.textTitle}>Articles</Text>
             <View style={styles.viewHeader1}>
-              <TouchableOpacity
-                onPress={() => {
-                  Share.share({
-                    message: "",
-                  });
-                }}
-              >
-                <Ionicons
-                  name="share-social-outline"
-                  size={24}
-                  color="#484848"
-                />
-              </TouchableOpacity>
+              <Text
+                style={{ width: "20%" }}></Text>
               <TouchableOpacity
                 onPress={async () => {
                   const res = await apiservice({

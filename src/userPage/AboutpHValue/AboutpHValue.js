@@ -2,28 +2,14 @@ import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
-  SafeAreaView,
   Image,
   Dimensions,
   StyleSheet,
-  TextInput,
   TouchableOpacity,
-  FlatList,
-  ScrollView,
-  Modal,
-  Alert,
-  Share,
+
 } from "react-native";
 import {
-  MaterialCommunityIcons,
   Entypo,
-  FontAwesome,
-  MaterialIcons,
-  Feather,
-  AntDesign,
-  FontAwesome5,
-  Ionicons,
-  EvilIcons,
 } from "@expo/vector-icons";
 const { width, height } = Dimensions.get("screen");
 export default function AboutpHValue({ navigation, route }) {

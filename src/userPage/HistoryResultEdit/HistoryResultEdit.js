@@ -142,14 +142,14 @@ export default function HistoryResultEdit({ navigation, route }) {
               </Text>
             </View>
 
-            <View style={[styles.viewTopic, {marginTop: 0}]}>
+            <View style={[styles.viewTopic, { marginTop: 0 }]}>
               <Text>{" "}</Text>
               <Text style={styles.textDate}>
                 Run time :
                 {" "}{route?.params?.timer == undefined || null ? '-' : route?.params?.timer} s.
               </Text>
             </View>
-            
+
             <View style={styles.viewTopic}>
               <Text style={styles.textSujectLight}>Sour</Text>
               <Text style={styles.textSujectLight}>

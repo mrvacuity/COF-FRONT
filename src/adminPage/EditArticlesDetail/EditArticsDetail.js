@@ -10,20 +10,11 @@ import {
   TouchableOpacity,
   FlatList,
   ScrollView,
-  Modal,
-  Alert,
-  Share,
 } from "react-native";
 import {
   MaterialCommunityIcons,
   Entypo,
-  FontAwesome,
-  MaterialIcons,
   Feather,
-  AntDesign,
-  FontAwesome5,
-  Ionicons,
-  EvilIcons,
 } from "@expo/vector-icons";
 import moment from "moment";
 import { authActionComment } from "../../action/authAction";
