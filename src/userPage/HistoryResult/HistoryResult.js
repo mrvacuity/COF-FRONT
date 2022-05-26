@@ -68,7 +68,8 @@ export default function HistoryResult({ navigation }) {
         <FlatList
           numColumns={1}
           style={{}}
-          data={data.sort((a, b) => b.id - a.id)}
+          // data={data.sort((a, b) => b.id - a.id)}
+          data={data.sort((a, b) => a.id - b.id)}
           renderItem={({ item, index }) => {
             return (
               <TouchableOpacity
@@ -82,7 +83,7 @@ export default function HistoryResult({ navigation }) {
                 <Text style={styles.textSubject}>
                   My Memo
                   {" "}
-                  {item.id+1}
+                  {index+1}
                 </Text>
                 <Text style={styles.textDate}>
                   Date : {moment(item?.createdAt).format("DD/MM/YYYY")} Time :{" "}

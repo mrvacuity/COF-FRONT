@@ -29,8 +29,6 @@ import moment from "moment";
 import {
   MaterialCommunityIcons,
   Feather,
-  FontAwesome,
-  AntDesign,
 } from "@expo/vector-icons";
 import { apiservice } from "../../service/api";
 import { Authen, pagestate, tokenState } from "../../recoil/recoil";
@@ -293,108 +291,6 @@ export default function Login({ navigation }) {
       Alert.alert("Please fill out the information correctly and completely.");
     }
   }
-  // function LoginSocial() {
-  //   return (
-  //     <View style={{ flexDirection: "row" }}>
-  //       <TouchableOpacity
-  //         onPress={async () => {
-  //           const { type, accessToken, user } = await Google.logInAsync({
-  //             iosClientId: `22120545476-br9pha6eghtgtsh1g9gf96jggrjk8rkk.apps.googleusercontent.com`,
-  //             androidClientId: `924183329457-m15nmps64fbvp6gr945f0ci6mu6au2qf.apps.googleusercontent.com`,
-  //             androidStandaloneAppClientId: `924183329457-m15nmps64fbvp6gr945f0ci6mu6au2qf.apps.googleusercontent.com`,
-  //             iosStandaloneAppClientId: `22120545476-br9pha6eghtgtsh1g9gf96jggrjk8rkk.apps.googleusercontent.com`,
-  //           });
-  //           const response = await apiservice({
-  //             method: "post",
-  //             path: "/authen/google",
-  //             body: {
-  //               telephoneNo: null,
-  //               image_Profile: user.photoUrl,
-  //               fullname: user.name,
-  //               email: user.email,
-  //               password: user.id,
-  //               gender: null,
-  //               // birthday: null,
-  //               username: user.givenName,
-  //               Type: "GOOGLE",
-  //             },
-  //           });
-  //           if (response.status == 200) {
-  //             setState(response.data);
-  //             setAuth({
-  //               auth: true,
-  //             });
-  //             setTimeout(() => {
-  //               navigation.navigate("MyTabs");
-  //             }, 300);
-  //           }
-  //         }}
-  //         style={styles.buttonSocial}
-  //       >
-  //         <Image
-  //           style={{ width: 20, height: 15 }}
-  //           source={require("../../img/mail.png")}
-  //         />
-  //       </TouchableOpacity>
-  //       <TouchableOpacity
-  //         onPress={async () => {
-  //           await Facebook.initializeAsync({
-  //             appId: "1564480960562304",
-  //           });
-  //           const {
-  //             type,
-  //             token,
-  //             expirationDate,
-  //             permissions,
-  //             declinedPermissions,
-  //           } = await Facebook.logInWithReadPermissionsAsync({
-  //             permissions: ["public_profile"],
-  //             behavior: "web",
-  //           });
-  //           if (type === "success") {
-  //             // Get the user's name using Facebook's Graph API
-  //             const profile = await fetch(
-  //               `https://graph.facebook.com/me?fields=birthday,email,name,picture&access_token=${token}`
-  //             );
-  //             const public_profile = await profile.json();
-
-  //             const response = await apiservice({
-  //               method: "post",
-  //               path: "/authen/facebook",
-  //               body: {
-  //                 telephoneNo: null,
-  //                 image_Profile: public_profile.picture.data.url,
-  //                 fullname: public_profile.name,
-  //                 email: public_profile.email,
-  //                 password: public_profile.id,
-  //                 gender: null,
-  //                 // birthday: null,
-  //                 username: public_profile.id,
-  //                 Type: "FACEBOOK",
-  //               },
-  //             });
-  //             if (response.status == 200) {
-  //               setState(response.data);
-  //               setAuth({
-  //                 auth: true,
-  //               });
-  //               setTimeout(() => {
-  //                 navigation.navigate("MyTabs");
-  //               }, 300);
-  //             }
-  //           }
-  //         }}
-  //         style={[styles.buttonSocial, { marginHorizontal: 7 }]}
-  //       >
-  //         <Image
-  //           style={{ width: 20, height: 20 }}
-  //           source={require("../../img/facebook.png")}
-  //         />
-  //       </TouchableOpacity>
-  //     </View>
-  //   );
-  // }
-
   return (
     <View style={styles.container}>
       <View style={{ marginTop: Platform.OS === "ios" ? 0 : 30 }} />
@@ -522,7 +418,6 @@ export default function Login({ navigation }) {
                 <TouchableOpacity onPress={login} style={styles.buttonSuccess}>
                   <Text style={styles.textButton}>Login</Text>
                 </TouchableOpacity>
-                {/* <LoginSocial /> */}
                 <TouchableOpacity
                   onPress={() => {
                     setLoginBody({ username: "", password: "" });

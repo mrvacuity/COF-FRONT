@@ -122,7 +122,6 @@ export default function Profile({ navigation }) {
     } else {
     }
   };
-
   useEffect(() => {
     getProfile();
   }, [focus]);
@@ -268,21 +267,6 @@ export default function Profile({ navigation }) {
               {textLength + "/400"}
             </Text>
           </View>
-          {/* <View style={styles.viewProfile}>
-            <Text style={styles.textSubject}>DOB</Text>
-            <Text style={styles.textDetail}>
-              {moment(state.birth_date).format("DD MMMM YYYY")}
-            </Text>
-            <TouchableOpacity
-              disabled={changeProfile ? false : true}
-              onPress={() => {
-                setModalVisible(true);
-              }}
-              style={styles.calendar}
-            >
-              <Feather name="calendar" size={14} color="#484848" />
-            </TouchableOpacity>
-          </View> */}
           {changeProfile ? (
             <View>
               <TouchableOpacity

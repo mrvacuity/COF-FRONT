@@ -679,6 +679,8 @@ export default function Camara({ navigation }) {
                   const time_s = new Date();
                   const res = await axios.post(
                     "https://getprediction-eb7wj7y6sa-as.a.run.app",
+                    // "https://getpredictml-eb7wj7y6sa-et.a.run.app",
+                    // "http://127.0.0.1:5000/",
                     formData,
                     {
                       headers: { "Content-Type": "multipart/form-data" },
@@ -686,6 +688,7 @@ export default function Camara({ navigation }) {
                   );
                   const time_e = new Date();
                   const diff = ((time_e - time_s) * 0.001).toFixed(2);
+
                   console.log(diff)
                   setState({ ...state, timer: diff });
                   if (res.status == 200) {
